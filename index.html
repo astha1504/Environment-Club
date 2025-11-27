@@ -50,50 +50,84 @@
   
 
 <!-- About Us Section with Moving Background Image -->
+<!-- About Us Section with Moving Background Image -->
 <section class="page-section about-section fadein" id="about-us">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-7">
-              <h1 class='text-success'>ABOUT US</h1>
-              <hr>
-              <p class="text-bold">Welcome to the Allenhouse Environment Club, where passion meets purpose in protecting our planet. We are a community of eco-conscious individuals dedicated to fostering sustainability, spreading awareness, and driving impactful environmental initiatives.</p>
-              <p class="text-bold">Through collaborative projects, educational workshops, and campus-wide campaigns, we aim to inspire meaningful change and promote green practices. Whether it's tree plantation drives, clean-up campaigns, or advocating for renewable energy solutions, we work tirelessly to make a difference.</p>
-              <p class="text-bold">Our club conducts different activities for its members throughout the year at the college, intercollegiate, and zonal levels. Join us as we strive for a cleaner, greener, and more sustainable future for all.</p>
-          </div>
-
-          <div class="col-md-5" 
-          style="background-color: #f0eecf; padding: 0; margin: 0; display: flex; justify-content: flex-end; align-items: center; height: 100vh;">
-         <video autoplay muted loop playsinline 
-            style="height: 100vh; aspect-ratio: 9/16; object-fit: cover; border-radius: 12px; margin-right: 0;">
-              <source src="img/Green and Beige St. Patrick's Day Instagram Reel (1).mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          
+  <div class="container py-5">
+    <div class="row align-items-center">
+      
+      <!-- Text Section -->
+      <div class="col-md-6 mb-4">
+        <h1 class="text-success fw-bold">ABOUT US</h1>
+        <hr class="about-hr" />
+        <p class="text-bold">
+          Welcome to the Allenhouse Environment Club, where passion meets purpose in protecting our planet.
+          We are a community of eco-conscious individuals dedicated to fostering sustainability,
+          spreading awareness, and driving impactful environmental initiatives.
+        </p>
+        <p class="text-bold">
+          Through collaborative projects, educational workshops, and campus-wide campaigns,
+          we aim to inspire meaningful change and promote green practices. Whether it's tree plantation drives,
+          clean-up campaigns, or advocating for renewable energy solutions, we work tirelessly to make a difference.
+        </p>
+        <p class="text-bold">
+          Our club conducts different activities for its members throughout the year at the college,
+          intercollegiate, and zonal levels. Join us as we strive for a cleaner, greener,
+          and more sustainable future for all.
+        </p>
       </div>
+
+      <!-- Video Section -->
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <video autoplay muted loop playsinline class="w-100 rounded shadow">
+            <source src="img/Jivitaa.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- CSS for Moving Background for About Us Section -->
+<!-- CSS for About Us Section -->
 <style>
   .about-section {
-      position: relative;
-      background: url('img/which.jpeg') no-repeat center center/cover;
-      animation: moveBackground 25s linear infinite alternate;
+    background: url('img/which.jpeg') no-repeat center center/cover;
+    animation: moveBackground 25s linear infinite alternate;
   }
+
   @keyframes moveBackground {
-      0% {
-          background-position: 0% 50%;
-      }
-      100% {
-          background-position: 100% 50%;
-      }
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
   }
+
   .text-bold {
-      font-weight: bold;
-      color: #333;
+    font-weight: 600;
+    color: #222;
+  }
+
+  .about-hr {
+    border: 2px solid #198754;
+    width: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .fadein {
+    animation: fadeIn 1s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
+
  <!-- Enhanced Our Events Section with Moving Background Image -->
  <section class="mission-section" id="features">
   <div class="container">
@@ -189,164 +223,268 @@
 
 <!-- Updated index.html -->
 <section class="page-section bg-light" id="events">
-  <section class="page-section bg-light" id="events">
     <div class="container">
       <div class="text-center">
         <h2 class="section-heading text-uppercase text-primary">Our Events</h2>
         <p class="section-subheading text-muted">Discover our past milestones and upcoming ventures as we continue to shape a better future.</p>
       </div>
-      
+  
       <!-- Event Navigation Buttons -->
-      <div class="text-center">
+      <div class="text-center mb-4">
         <button class="event-btn" onclick="showEvents('past-events')">Past Events</button>
         <button class="event-btn" onclick="showEvents('recent-events')">Upcoming Events</button>
       </div>
-      
+  
       <!-- Past Events -->
       <div class="event-section" id="past-events">
         <div class="text-center">
           <h3 class="text-success">Memorable Milestones</h3>
         </div>
-        <div class="timeline-slider">
-          <div class="timeline-card">
-            <img src="img/inauguration.png" alt="Grand Inauguration" class="event-img"/>
-            <h4 class="text-success">Grand Inauguration</h4>
-            <p class="text-muted">Marking the first stride toward a <br>brighter and Sustainable future! </p>
-            <p class="text-muted"><strong>Date:</strong> 14<sup>th</sup> Dec, 2024<br><strong>Venue:</strong> ZCC AIT</p>
+  
+        <div class="timeline-wrapper">
+          <button class="arrow-btn left-arrow" onclick="scrollTimeline('past-events', -1)">&#8592;</button>
+          <div class="timeline-slider" id="past-events-slider">
+            <div class="timeline-card">
+              <img src="img/inauguration.png" alt="Grand Inauguration" class="event-img"/>
+              <h4 class="text-success">Grand Inauguration</h4>
+              <p class="text-muted">Marking the first stride toward a <br>brighter and Sustainable future! </p>
+              <p class="text-muted"><strong>Date:</strong> 14<sup>th</sup> Dec, 2024<br><strong>Venue:</strong> ZCC AIT</p>
+            </div>
+            <div class="timeline-card">
+              <img src="img/PLANTINGG.png" alt="Tree Plantation Drive" class="event-img"/>
+              <h4 class="text-success">Tree Plantation Drive</h4>
+              <p class="text-muted">Over 500 trees planted<br> to nurture a greener future.</p>
+              <p class="text-muted"><strong>Date:</strong> 14<sup>th</sup> Dec, 2024<br><strong>Venue:</strong>Allenhouse Ground</p>
+            </div>
+            <div class="timeline-card">
+              <img src="img/eff1.jpg" alt="Internal Cleaning Initiative" class="event-img"/>
+              <h4 class="text-success">Internal Cleaning Drive</h4>
+              <p class="text-muted">Students came together to <br>clean and beautify our campus.</p>
+              <p class="text-muted"><strong>Date:</strong> 25<sup>th</sup> Jan, 2025<br><strong>Venue:</strong>AGOI</p>
+            </div>
+            <!-- Added Past Events -->
+            <div class="timeline-card">
+              <img src="img/graffiti.png" alt="Environmental Awareness Campaign" class="event-img"/>
+              <h4 class="text-success">Graffiti Art</h4>
+              <p class="text-muted">Educating the community on sustainable practices.</p>
+              <p class="text-muted"><strong>Date:</strong> 10<sup>th</sup>Apr, 2025<br><strong>Venue:</strong>B & C block Area</p>
+            </div>
+          
           </div>
-          <div class="timeline-card">
-            <img src="img/PLANTINGG.png" alt="Tree Plantation Drive" class="event-img"/>
-            <h4 class="text-success">Tree Plantation Drive</h4>
-            <p class="text-muted">Over 500 trees planted<br> to nurture a greener future.</p>
-            <p class="text-muted"><strong>Date:</strong> 14<sup>th</sup> Dec, 2024<br><strong>Venue:</strong>Allenhouse Ground</p>
-          </div>
-          <div class="timeline-card">
-            <img src="img/TC.png" alt="Internal Cleaning Initiative" class="event-img"/>
-            <h4 class="text-success">Internal Cleaning Drive</h4>
-            <p class="text-muted">Students came together to <br>clean and beautify our campus.</p>
-            <p class="text-muted"><strong>Date:</strong> 25<sup>th</sup> Jan, 2025<br><strong>Venue:</strong>AGOI</p>
-          </div>
+          <button class="arrow-btn right-arrow" onclick="scrollTimeline('past-events', 1)">&#8594;</button>
         </div>
       </div>
-      
+  
       <!-- Upcoming Events -->
       <div class="event-section" id="recent-events">
         <div class="text-center">
           <h3 class="text-success">Exciting Ventures Ahead</h3>
         </div>
-        <div class="timeline-slider">
-          <div class="timeline-card">
-            <img src="img/TC.png" alt="Technical Hackathon" class="event-img"/>
-            <h4 class="text-success">Technical Hackathon</h4>
-            <p class="text-muted">Code, compete, and innovate<br> in our upcoming tech showdown!</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSexOYCs29Oa7tRklVYiZhwRlkqfqB5yznBLxS0mx9xp5vSiwQ/viewform?usp=header" class="btn event-btn popup">Register Now</a>
+  
+        <div class="timeline-wrapper">
+          <button class="arrow-btn left-arrow" onclick="scrollTimeline('recent-events', -1)">&#8592;</button>
+          <div class="timeline-slider" id="recent-events-slider">
+            <div class="timeline-card">
+              <img src="img/TC.png" alt="Technical Hackathon" class="event-img"/>
+              <h4 class="text-success">Technical Hackathon</h4>
+              <p class="text-muted">Code, compete, and innovate<br> in our upcoming tech showdown!</p>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSexOYCs29Oa7tRklVYiZhwRlkqfqB5yznBLxS0mx9xp5vSiwQ/viewform?usp=header" class="btn event-btn popup">Register Now</a>
+            </div>
+            <!--
+            <div class="timeline-card">
+              <img src="img/NUKKADTEMP.png" alt="Nukkad Natak" class="event-img"/>
+              <h4 class="text-success">Nukkad Natak</h4>
+              <p class="text-muted">Spreading awareness<br> through theatrical storytelling.</p>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSexOYCs29Oa7tRklVYiZhwRlkqfqB5yznBLxS0mx9xp5vSiwQ/viewform?usp=header" class="btn event-btn popup">Register Now</a>
+            </div>
+            -->
+            <div class="timeline-card">
+              <img src="img/WORKSHOP.png" alt="Cleanliness Drive" class="event-img"/>
+              <h4 class="text-success">Cleanliness Drive</h4>
+              <p class="text-muted">Join us in our initiative<br> to keep the environment clean.</p>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSexOYCs29Oa7tRklVYiZhwRlkqfqB5yznBLxS0mx9xp5vSiwQ/viewform?usp=header" class="btn event-btn popup">Register Now</a>
+            </div>
+            <div class="timeline-card">
+              <img src="img/ecokriti.jpg" alt="EcoKriti" class="event-img"/>
+              <h4 class="text-success">EcoKriti</h4>
+              <p class="text-muted">Showcase creativity <br>through eco-friendly innovations.</p>
+              <a href="YOUR_REGISTRATION_LINK" class="btn event-btn popup">Register Now</a>
+            </div>
+            <!-- Added Upcoming Events -->
+            <!--div class="timeline-card">
+              <img src="img/robotics_comp.jpg" alt="Robotics Competition" class="event-img"/>
+              <h4 class="text-success">Robotics Competition</h4>
+              <p class="text-muted">Test your robotics skills in a thrilling contest.</p>
+              <a href="YOUR_ROBOTICS_REG_LINK" class="btn event-btn popup">Register Now</a>
+            </!--div>
+            <div-- class="timeline-card">
+              <img src="img/innovation_fair.jpg" alt="Innovation Fair" class="event-img"/>
+              <h4 class="text-success">Innovation Fair</h4>
+              <p class="text-muted">Showcase your innovative ideas and projects.</p>
+              <a href="YOUR_INNOVATION_FAIR_REG_LINK" class="btn event-btn popup">Register Now</a>
+            </div-->
           </div>
-          <!--div class="timeline-card">
-            <img src="img/NUKKADTEMP.png" alt="Nukkad Natak" class="event-img"/>
-            <h4 class="text-success">Nukkad Natak</h4>
-            <p class="text-muted">Spreading awareness<br> through theatrical storytelling.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSexOYCs29Oa7tRklVYiZhwRlkqfqB5yznBLxS0mx9xp5vSiwQ/viewform?usp=header" class="btn event-btn popup">Register Now</a>
-          </div-->
-          <div class="timeline-card">
-            <img src="img/WORKSHOP.png" alt="Cleanliness Drive" class="event-img"/>
-            <h4 class="text-success">Cleanliness Drive</h4>
-            <p class="text-muted">Join us in our initiative<br> to keep the environment clean.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSexOYCs29Oa7tRklVYiZhwRlkqfqB5yznBLxS0mx9xp5vSiwQ/viewform?usp=header" class="btn event-btn popup">Register Now</a>
-          </div>
-          <div class="timeline-card">
-            <img src="img/ecokriti.jpg" alt="EcoKriti" class="event-img"/>
-            <h4 class="text-success">EcoKriti</h4>
-            <p class="text-muted">Showcase creativity <br>through eco-friendly innovations.</p>
-            <a href="YOUR_REGISTRATION_LINK" class="btn event-btn popup">Register Now</a>
-        </div>
-        
+          <button class="arrow-btn right-arrow" onclick="scrollTimeline('recent-events', 1)">&#8594;</button>
         </div>
       </div>
     </div>
+  
+    <script>
+      function showEvents(eventType) {
+        document.querySelectorAll('.event-section').forEach(section => section.style.display = 'none');
+        document.getElementById(eventType).style.display = 'block';
+      }
+      showEvents('recent-events');
+  
+      function scrollTimeline(eventType, direction) {
+        const slider = document.getElementById(eventType + '-slider');
+        const scrollAmount = slider.clientWidth * 0.8; // Scroll by 80% width of visible area
+        slider.scrollBy({
+          left: direction * scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    </script>
+  
+    <style>
+      /* Buttons */
+      .event-btn {
+        margin: 10px;
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(45deg, #fed136, #e6b301);
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .event-btn:hover {
+        transform: scale(1.1);
+        background: orange;
+      }
+  
+      /* Timeline slider wrapper with arrows */
+      .timeline-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 20px 0 50px;
+      }
+  
+      /* Hide horizontal scrollbar */
+      .timeline-slider {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding: 20px 0;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        flex: 1;
+      }
+      .timeline-slider::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+  
+      /* Cards */
+      .timeline-card {
+  flex: 0 0 auto;
+  width: 280px; /* Reduced from 320px */
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+      .timeline-card:hover {
+        transform: scale(1.05);
+      }
+  
+      /* Event images */
+      .event-img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+  
+      /* Event sections hidden by default */
+      .event-section {
+        display: none;
+        padding: 50px 0;
+      }
+  
+      /* Arrow buttons */
+      .arrow-btn {
+        background-color: #fed136;
+        border: none;
+        color: #333;
+        font-size: 2rem;
+        padding: 10px 15px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        user-select: none;
+        transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        z-index: 10;
+        flex-shrink: 0;
+      }
+      .arrow-btn:hover {
+        background-color: orange;
+        color: white;
+        transform: scale(1.1);
+      }
+      .left-arrow {
+        margin-right: 10px;
+      }
+      .right-arrow {
+        margin-left: 10px;
+      }
+  
+      /* Fade in animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+  
+      /* Responsive */
+      @media (max-width: 768px) {
+        .timeline-card {
+          width: 260px;
+          padding: 15px;
+        }
+        .arrow-btn {
+          font-size: 1.5rem;
+          padding: 8px 12px;
+        }
+      }
+      @media (max-width: 480px) {
+        .timeline-card {
+          width: 220px;
+          padding: 10px;
+        }
+        .event-btn {
+          font-size: 16px;
+          padding: 10px 20px;
+        }
+        .arrow-btn {
+          font-size: 1.3rem;
+          padding: 6px 10px;
+        }
+      }
+    </style>
   </section>
   
-  <script>
-    function showEvents(eventType) {
-      document.querySelectorAll('.event-section').forEach(section => section.style.display = 'none');
-      document.getElementById(eventType).style.display = 'block';
-    }
-    showEvents('recent-events');
-  </script>
-  
-  <style>
-    .event-btn {
-      margin: 10px;
-      padding: 12px 25px;
-      font-size: 18px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(45deg, #fed136, #e6b301);
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    .event-btn:hover {
-      transform: scale(1.1);
-      background: orange;
-    }
-    .timeline-slider {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      padding: 20px 0;
-      white-space: nowrap;
-    }
-    .timeline-card {
-      flex: 0 0 auto;
-      width: 320px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s ease-in-out;
-      animation: fadeInUp 0.6s ease-in-out;
-    }
-    .timeline-card:hover {
-      transform: scale(1.05);
-    }
-    .event-img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .event-section {
-      display: none;
-      padding: 50px 0;
-    }
-    .popup {
-      background: orange;
-      padding: 10px 15px;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-    .popup:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 15px rgba(255, 165, 0, 0.6);
-      background: orange;
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-  
-</section>
 <section class="page-section bg-light team-section" id="team">
     <div class="container">
         <div class="text-center">
@@ -379,9 +517,9 @@
             <div class="team-card" data-aos="flip-left">
                 <div class="team-inner">
                     <div class="team-front">
-                        <img src="img/varun sir.png" alt="Anand Singh">
-                        <h4>Dr. Varun Shukla</h4>
-                        <p>R&D Dean, Allenhouse</p>
+                        <img src="img/sudhir sir.jpg" alt="Anand Singh">
+                        <h4>Dr. Sudhir Singh</h4>
+                        <p>Technical Head</p>
                     </div>
                     <div class="team-back">
                         <p>Leading the club with vision, innovation, and dedication to sustainability.</p>
@@ -477,19 +615,99 @@
   
 
 <!-- Research & Development Section with Moving Background Image -->
+ <!-- Research & Development Section with Moving Background Image -->
 <section class="page-section rnd-section" id="rnd">
+  <div class="container text-center py-5">
+    <h2 class="section-heading text-uppercase">Innovation, Research & Development</h2>
+
+    <!-- Image and Details -->
+    <div class="rnd-frame mx-auto my-4" style="max-width: 300px;">
+      <img src="img/shashwatt sir.jpg" alt="Shashwat Mishra" class="rnd-image" />
+    </div>
+    <h4 class="text-primary">Mr. Shashwat Mishra</h4>
+    <p class="text-muted">Project Coordinator | Mentor of Innovation</p>
+
+    <!-- Description -->
+    <p class="section-subheading text-muted px-3">
+      Under the guidance of Mr. Shashwat Mishra, our Research & Development team is leading innovative efforts in sustainability, technology, and environmental advancement. His passion and mentorship drive impactful projects that aim to build a smarter and greener future.
+    </p>
+
+    <!-- Button -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="research.html" 
+         style="background-color: #007b5e; 
+                color: white; 
+                padding: 0.75rem 1.5rem; 
+                border: none; 
+                border-radius: 8px; 
+                font-size: 1rem; 
+                font-weight: bold; 
+                cursor: pointer; 
+                text-decoration: none; 
+                display: inline-block; 
+                transition: background-color 0.3s ease;">
+          View Projects
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CSS for Enhancements -->
+<style>
+  .rnd-section {
+    position: relative;
+    overflow: hidden;
+    background: url('img/distribution-black-lines-dots-white-space-digital-background-data-network-connection-3d-rendering_745045-56.avif') no-repeat center center/cover;
+    animation: moveBackground 30s linear infinite alternate;
+  }
+
+  @keyframes moveBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .rnd-frame {
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: white;
+  }
+
+  .rnd-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .section-subheading {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .text-bold {
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+
+<!--section class="page-section rnd-section" id="rnd">
   <div class="container text-center">
       <h2 class="section-heading text-uppercase">Research & Development</h2>
       <div class="rnd-frame">
           <img src="img/varun sir.png" alt="Prof. Varun Shukla" class="rnd-image" />
       </div>
+      
       <h4 class="text-primary">Prof. Varun Shukla</h4>
       <p class="text-muted">R&D Dean, Allenhouse | Ph.D.</p>
       <p class="section-subheading text-muted">Our Research & Development team is dedicated to pioneering innovative solutions in sustainability and environmental conservation. We focus on groundbreaking projects that foster technological advancements and promote a greener future.</p>
 
       <div style="text-align: center; margin-top: 2rem;">
         <a href="research.html" 
-           style="background-color: #0596685b; 
+           style="background-color: #007b5e; 
                   color: white; 
                   padding: 0.75rem 1.5rem; 
                   border: none; 
@@ -504,7 +722,7 @@
         </a>
     </div>
   </div>
-</section>
+</!--section>
 
 <!-- CSS for Enhancements -->
 <style>
@@ -539,6 +757,8 @@
         color: #333;
     }
 </style>
+
+
 
 
 <section class="feature-section">

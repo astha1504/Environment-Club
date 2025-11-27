@@ -11,12 +11,12 @@
     <style>
         :root {
             --primary-green: #28a745;         /* Match index.html green */
-            --secondary-green: #1B5E20;
+            --secondary-green: #007b5e;
             --accent-green: #d1fae5;
             --light-green: #e6f4ea;
             --dark-green: #14532d;
             --text-primary: #25283B;
-            --text-secondary: #6c757d;
+            --text-secondary: #000000;
             --background: #F5F7FA;
             --surface: #FFFFFF;
             --border-light: #E1E8ED;
@@ -110,7 +110,7 @@
 }
 
 .navbar-logo {
-    height: 40px;
+    height: 80px;
     object-fit: contain;
 }
 
@@ -509,6 +509,33 @@ body {
                 transform: translateY(0);
             }
         }
+        @media (max-width: 768px) {
+    .navbar-links ul {
+        flex-direction: column;
+        background: var(--primary-green);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        display: none;
+        padding: 1rem 2rem;
+    }
+
+    .navbar-links ul.show {
+        display: flex;
+    }
+
+    .navbar-menu-icon {
+        display: block;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.navbar-menu-icon {
+    display: none;
+}
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -584,19 +611,6 @@ body {
 
     <!-- Project Detail Page -->
     <div id="detail-page" class="page">
-        <nav class="navbar">
-            <div class="rd-navbar-container">
-                <a href="#" class="nav-brand">
-                    <i class="fas fa-flask"></i>
-                    Research & Development
-                </a>
-                <!--button class="back-btn" onclick="showGallery()">
-                    <i class="fas fa-arrow-left"></i>
-                    Back to Projects
-                </button-->
-            </div>
-        </nav>
-
         <div id="project-hero-section" class="project-hero">
             <!-- Dynamic content -->
         </div>
@@ -641,155 +655,110 @@ body {
     </div>
 
     <script>
-        const projectsData = [
-            {
-                id: 1,
-                title: "Quantum Computing Interface",
-                description: "Developing an intuitive interface for quantum computing operations, making quantum algorithms accessible to researchers and developers.",
-                detailedDescription: "Our quantum computing interface project aims to democratize quantum computing by creating user-friendly tools that abstract complex quantum mechanics principles. We're building a comprehensive platform that allows researchers, students, and developers to interact with quantum computers without requiring deep expertise in quantum physics. The interface includes visual programming tools, simulation capabilities, and real-time quantum circuit design features.",
-                leader: { name: "Dr. Sarah Chen", role: "Principal Investigator", branch: "Quantum Computing Research Division" },
-                members: [
-                    { name: "Alex Rodriguez", role: "Senior Software Engineer", branch: "Frontend Development" },
-                    { name: "Maya Patel", role: "Quantum Algorithm Specialist", branch: "Algorithm Research" },
-                    { name: "Dr. James Wright", role: "Physics Consultant", branch: "Theoretical Physics" },
-                    { name: "Emma Thompson", role: "UX/UI Designer", branch: "User Experience" },
-                    { name: "David Kim", role: "Backend Developer", branch: "Infrastructure" },
-                    { name: "Sophie Laurent", role: "Quality Assurance Lead", branch: "Testing & Validation" }
-                ],
-                technologies: ["Python", "Qiskit", "React", "WebGL", "Docker", "Kubernetes"],
-                icon: "fas fa-atom",
-                progress: 65,
-                startDate: "January 2024",
-                endDate: "December 2025",
-                phase: "Development"
-            },
-            {
-                id: 2,
-                title: "AI-Powered Drug Discovery",
-                description: "Leveraging machine learning and artificial intelligence to accelerate the drug discovery process from years to months.",
-                detailedDescription: "This revolutionary project combines cutting-edge artificial intelligence with pharmaceutical research to dramatically reduce drug discovery timelines. Our AI models can predict molecular behavior, identify potential drug compounds, and simulate clinical trial outcomes. We're using deep learning to analyze vast databases of chemical compounds and biological data to identify promising therapeutic targets faster than ever before.",
-                leader: { name: "Dr. Emily Johnson", role: "Research Director", branch: "Biomedical AI Research" },
-                members: [
-                    { name: "Michael Zhang", role: "Machine Learning Engineer", branch: "AI Development" },
-                    { name: "Dr. Priya Sharma", role: "Pharmaceutical Researcher", branch: "Drug Discovery" },
-                    { name: "Robert Kim", role: "Data Scientist", branch: "Bioinformatics" },
-                    { name: "Lisa Chang", role: "Computational Biologist", branch: "Molecular Modeling" },
-                    { name: "Carlos Martinez", role: "Database Administrator", branch: "Data Management" },
-                    { name: "Dr. Anna Petrov", role: "Clinical Research Coordinator", branch: "Clinical Trials" }
-                ],
-                technologies: ["TensorFlow", "PyTorch", "BioPython", "PostgreSQL", "AWS", "Apache Spark"],
-                icon: "fas fa-pills",
-                progress: 72,
-                startDate: "March 2023",
-                endDate: "August 2025",
-                phase: "Clinical Testing"
-            },
-            {
-                id: 3,
-                title: "Sustainable Energy Grid",
-                description: "Creating intelligent algorithms to optimize renewable energy distribution across smart grids for maximum efficiency.",
-                detailedDescription: "Our smart grid optimization project focuses on creating an intelligent energy distribution network that maximizes renewable energy usage while minimizing waste. The system uses real-time data from solar panels, wind turbines, and energy storage systems to predict demand and optimize distribution. We're implementing machine learning algorithms that can adapt to changing weather patterns and energy consumption habits.",
-                leader: { name: "Dr. David Thompson", role: "Energy Systems Lead", branch: "Renewable Energy Division" },
-                members: [
-                    { name: "Lisa Wang", role: "Grid Systems Engineer", branch: "Power Systems" },
-                    { name: "Carlos Mendez", role: "IoT Specialist", branch: "Sensor Networks" },
-                    { name: "Dr. Anna Kowalski", role: "Energy Analytics Expert", branch: "Data Analysis" },
-                    { name: "Mark Jensen", role: "Software Developer", branch: "Grid Software" },
-                    { name: "Fatima Al-Rashid", role: "Sustainability Consultant", branch: "Environmental Impact" },
-                    { name: "Jake Morrison", role: "Field Operations Manager", branch: "Implementation" }
-                ],
-                technologies: ["MATLAB", "Python", "IoT Sensors", "MongoDB", "Apache Kafka", "Grafana"],
-                icon: "fas fa-solar-panel",
-                progress: 58,
-                startDate: "June 2023",
-                endDate: "December 2025",
-                phase: "Pilot Testing"
-            },
-            {
-                id: 4,
-                title: "Autonomous Vehicle Safety",
-                description: "Developing advanced safety protocols and emergency response systems for autonomous vehicles in all conditions.",
-                detailedDescription: "Our autonomous vehicle safety project is developing next-generation safety systems that can handle complex driving scenarios and emergency situations. We're creating AI-powered decision-making systems that can react faster than human drivers while maintaining passenger safety as the top priority. The project includes advanced sensor fusion, predictive collision avoidance, and emergency response protocols.",
-                leader: { name: "Dr. Kevin Park", role: "Autonomous Systems Director", branch: "Vehicular AI Research" },
-                members: [
-                    { name: "Jessica Liu", role: "Computer Vision Engineer", branch: "Perception Systems" },
-                    { name: "Ahmed Hassan", role: "Control Systems Engineer", branch: "Vehicle Control" },
-                    { name: "Dr. Rachel Green", role: "Safety Systems Analyst", branch: "Safety Engineering" },
-                    { name: "Tom Wilson", role: "Sensor Fusion Specialist", branch: "Sensor Technology" },
-                    { name: "Nina Patel", role: "AI Ethics Researcher", branch: "Ethics & Safety" },
-                    { name: "Dr. Marcus Weber", role: "Testing Coordinator", branch: "Vehicle Testing" }
-                ],
-                technologies: ["C++", "ROS", "LIDAR", "Computer Vision", "CUDA", "Linux"],
-                icon: "fas fa-car",
-                progress: 45,
-                startDate: "September 2023",
-                endDate: "June 2026",
-                phase: "Prototype Development"
-            },
-            {
-                id: 5,
-                title: "Blockchain Healthcare Records",
-                description: "Building a secure, decentralized system for managing healthcare records with privacy and seamless data sharing.",
-                detailedDescription: "This groundbreaking project creates a secure, patient-controlled healthcare record system using blockchain technology. Patients will have complete control over their medical data while enabling seamless sharing with healthcare providers. The system ensures privacy through advanced encryption while maintaining interoperability across different healthcare systems and providers worldwide.",
-                leader: { name: "Dr. Mark Stevens", role: "Blockchain Healthcare Lead", branch: "Digital Health Innovation" },
-                members: [
-                    { name: "Sophia Martinez", role: "Blockchain Developer", branch: "Distributed Systems" },
-                    { name: "Daniel O'Connor", role: "Security Engineer", branch: "Cybersecurity" },
-                    { name: "Dr. Ling Wei", role: "Healthcare Informatics Specialist", branch: "Medical Records" },
-                    { name: "Ryan Cooper", role: "Smart Contract Developer", branch: "Blockchain Development" },
-                    { name: "Zara Ahmed", role: "Privacy Compliance Officer", branch: "Regulatory Affairs" },
-                    { name: "Dr. Paul Nguyen", role: "Clinical Integration Specialist", branch: "Healthcare Systems" }
-                ],
-                technologies: ["Solidity", "Ethereum", "IPFS", "Node.js", "React", "MetaMask"],
-                icon: "fas fa-user-md",
-                progress: 80,
-                startDate: "January 2023",
-                endDate: "March 2025",
-                phase: "Integration Testing"
-            },
-            {
-                id: 6,
-                title: "Neural Brain-Computer Interface",
-                description: "Pioneering non-invasive brain-computer interfaces to help paralyzed patients control devices through thought.",
-                detailedDescription: "Our brain-computer interface project is developing revolutionary technology that allows paralyzed individuals to control computers and devices using only their thoughts. Using advanced neural signal processing and machine learning, we're creating non-invasive interfaces that can decode brain signals and translate them into digital commands. This technology has the potential to restore independence to millions of people worldwide.",
-                leader: { name: "Dr. Maria Rodriguez", role: "Neurotechnology Director", branch: "Brain-Computer Interface Lab" },
-                members: [
-                    { name: "James Anderson", role: "Neural Signal Engineer", branch: "Signal Processing" },
-                    { name: "Dr. Yuki Tanaka", role: "Neuroscientist", branch: "Neuroscience Research" },
-                    { name: "Sarah Mitchell", role: "Machine Learning Specialist", branch: "AI Development" },
-                    { name: "Dr. Ben Foster", role: "Clinical Researcher", branch: "Clinical Studies" },
-                    { name: "Aisha Okafor", role: "Biomedical Engineer", branch: "Medical Devices" },
-                    { name: "Lucas Silva", role: "Software Integration Lead", branch: "Software Development" }
-                ],
-                technologies: ["Signal Processing", "Machine Learning", "EEG", "Python", "TensorFlow", "Real-time Systems"],
-                icon: "fas fa-brain",
-                progress: 38,
-                startDate: "February 2024",
-                endDate: "December 2026",
-                phase: "Research & Development"
-            },
-            {
-                id: 7,
-                title: "Space Debris Tracking",
-                description: "Developing a comprehensive tracking system for space debris to prevent collisions with satellites and spacecraft.",
-                detailedDescription: "Our space debris tracking project addresses the growing threat of orbital debris to spacecraft and satellites. We're developing an advanced tracking system that uses radar, optical sensors, and predictive algorithms to monitor thousands of debris objects in Earth's orbit. The system provides early collision warnings and helps mission planners avoid dangerous debris fields.",
-                leader: { name: "Dr. Elena Volkov", role: "Space Surveillance Director", branch: "Orbital Mechanics Division" },
-                members: [
-                    { name: "Captain John Harris", role: "Mission Operations Manager", branch: "Space Operations" },
-                    { name: "Dr. Raj Gupta", role: "Orbital Dynamics Specialist", branch: "Trajectory Analysis" },
-                    { name: "Isabel Garcia", role: "Radar Systems Engineer", branch: "Detection Systems" },
-                    { name: "Chris Taylor", role: "Data Analytics Engineer", branch: "Tracking Analytics" },
-                    { name: "Dr. Mei-Lin Wu", role: "Predictive Modeling Expert", branch: "Collision Prediction" },
-                    { name: "Alex Petersen", role: "Ground Systems Coordinator", branch: "Ground Operations" }
-                ],
-                technologies: ["Radar Systems", "Satellite Technology", "Predictive Analytics", "C++", "Real-time Processing", "Database Systems"],
-                icon: "fas fa-satellite",
-                progress: 92,
-                startDate: "May 2022",
-                endDate: "October 2024",
-                phase: "Deployment"
-            }
-        ];
+       const projectsData = [
+    {
+        id: 1,
+        title: "Plastic Waste Management",
+        description: "A sustainable initiative to collect, recycle, and reuse plastic waste.",
+        detailedDescription: "This project tackles the challenge of plastic waste by establishing a system for collection, cleaning, melting, molding, decorating, and reusing plastic products. It involves community engagement through awareness campaigns and promotes source segregation, aiming for cleaner environments and eco-friendly recycling practices.",
+        leader: { name: "Himanshu", role: "Mentor", branch: "Environmental Engineering" },
+        members: [
+            { name: "Anand Singh", role: "Co-Mentor", branch: "Waste Management" },
+            { name: "Shagun", role: "Team Member", branch: "Field Operations" }
+        ],
+        technologies: ["Recycling", "Plastic Melting", "Molding", "Community Awareness"],
+        icon: "fas fa-recycle",
+        progress: 20,
+       startDate: "May 2025",
+        endDate: "Oct 2025",
+        phase: "Implementation"
+    },
+    {
+        id: 2,
+        title: "IoT-Based Pollution Indicator",
+        description: "A real-time air quality monitoring system using low-cost sensors.",
+        detailedDescription: "Using sensors like MQ-135 and SDS011 with Arduino/NodeMCU, this IoT system monitors pollutants (CO₂, CO, NO₂, PM2.5, PM10) and sends real-time data to a cloud platform. It helps raise awareness and trigger alerts when pollution levels are harmful, aiding timely intervention.",
+        leader: { name: "Saniya Naaz", role: "Mentor", branch: "IoT & Environmental Monitoring" },
+        members: [
+            { name: "Prateek", role: "Developer", branch: "Sensor Integration" },
+            { name: "Daniya Khan", role: "Engineer", branch: "Hardware" },
+            { name: "Azra Iqbal", role: "Researcher", branch: "Pollutant Detection" },
+            { name: "Kashish Singh", role: "UI Designer", branch: "Interface" },
+            { name: "Kajal Kesarwani", role: "Alert Engineer", branch: "Threshold System" },
+            { name: "Anishka Senger", role: "QA Tester", branch: "Field Validation" }
+        ],
+        technologies: ["Arduino", "MQ-135", "NodeMCU", "Cloud Platform", "Mobile App"],
+        icon: "fas fa-wind",
+        progress: 25,
+        startDate: "March 2024",
+        endDate: "January 2025",
+        phase: "Testing"
+    },
+    {
+        id: 3,
+        title: "IoT-Based Sensing Device",
+        description: "Smart IoT device to monitor air quality and environmental conditions in real-time.",
+        detailedDescription: "This affordable, portable IoT-enabled system includes sensors (MQ135, DHT11), ESP32/Arduino boards, and cloud platforms like ThingSpeak/Blynk. It monitors environmental changes and sends real-time alerts when pollutant levels rise, supporting decision-making and safety in urban and rural areas.",
+        leader: { name: "", role: "Mentor", branch: "IoT-Based Sensing Device" },
+        members: [
+            { name: "Nashra Absar", role: "Hardware Integrator", branch: "Sensors" },
+            { name: "Satwik Tiwari", role: "Developer", branch: "Cloud Integration" },
+            { name: "Sarthak Mishra", role: "Microcontroller Programmer", branch: "ESP32/Arduino" },
+            { name: "Shiresh Dwivedi", role: "Designer", branch: "UI/UX" },
+            { name: "Nausheen Khan", role: "Analyst", branch: "Environmental Metrics" },
+            { name: "Shubh", role: "Software Support", branch: "Testing" }
+        ],
+        technologies: ["ESP32", "MQ135", "DHT11", "ThingSpeak", "Blynk", "Wi-Fi"],
+        icon: "fas fa-microchip",
+        progress: 25,
+        startDate: "May 2025",
+        endDate: "Oct 2025",
+        phase: "Development"
+    },
+    {
+        id: 4,
+        title: "Solar-Based Iron",
+        description: "A clean energy solution to power irons using solar photovoltaic systems.",
+        detailedDescription: "This project introduces a solar-powered ironing system using PV panels, charge controllers, batteries, and optionally an inverter. It aims to offer uninterrupted ironing utility in electricity-deprived areas, reduce carbon emissions, and promote sustainable living through renewable energy adoption.",
+        leader: { name: "Riya", role: "Mentor", branch: "Renewable Systems" },
+        members: [
+            { name: "Shiv Mishra", role: "Co-Mentor", branch: "Power Systems" },
+            { name: "Zain Raza", role: "Team Member", branch: "Prototype Developer" }
+        ],
+        technologies: ["Solar PV", "Battery Storage", "Charge Controller", "DC-AC Inverter"],
+        icon: "fas fa-solar-panel",
+        progress: 15,
+        startDate: "May 2025",
+        endDate: "Oct 2025",
+        phase: "Prototyping"
+    },
+    {
+        id: 5,
+        title: "Garbage Collection App & Web Platform",
+        description: "Smart digital platform for reporting, managing, and tracking garbage collection.",
+        detailedDescription: "A citizen-facing mobile app and admin web dashboard streamline garbage reporting and collection. Features include photo-based reporting, pickup scheduling, truck tracking, analytics, and feedback systems. It aims to digitize waste management and engage the public for cleaner cities.",
+        leader: { name: "Shaurya Tiwari", role: "Web Mentor", branch: "Smart City Tech" },
+        members: [
+            { name: "Neelu Tiwari", role: "App Mentor", branch: "Mobile Development" },
+            { name: "Pragya Soni", role: "App Developer", branch: "User Module" },
+            { name: "Laxmi Kushwaha", role: "App Developer", branch: "User Module" },
+            { name: "Shraddha Mishra", role: "Web Developer", branch: "Admin Panel" },
+            { name: "Shreya Pal", role: "Web Developer", branch: "Tracking" },
+            { name: "Arpit Tiwari", role: "Web Developer", branch: "Routing" },
+            { name: "Ritesh Tiwari", role: "Web Developer", branch: "Analytics" },
+            { name: "Ansh Awasthi", role: "Web Developer", branch: "Backend" },
+            { name: "Kunal Tiwari", role: "App Developer", branch: "Pickup Feature" },
+            { name: "Anurag Mishra", role: "App Developer", branch: "Feedback System" },
+            { name: "Ashutosh Mishra", role: "App Developer", branch: "Notifications" }
+        ],
+        technologies: ["React", "Flutter", "Firebase", "MongoDB", "Google Maps API"],
+        icon: "fas fa-trash-alt",
+        progress: 24,
+        startDate: "May 2025",
+        endDate: "Oct 2025",
+        phase: "Beta Testing"
+    }
+];
 
         const projectsGrid = document.getElementById('projectsGrid');
 
@@ -860,7 +829,23 @@ body {
                     ${project.detailedDescription}
                 </div>
             `;
-            
+            let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+        // Scrolling Down
+        navbar.classList.add('navbar-hidden');
+    } else {
+        // Scrolling Up
+        navbar.classList.remove('navbar-hidden');
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
             // Update team section
             document.getElementById('team-structure-section').innerHTML = `
                 <h2 class="section-title">
